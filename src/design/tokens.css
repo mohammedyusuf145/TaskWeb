@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Mizan design tokens — the single source of truth.
+   Raw values live on :root[data-theme]; Tailwind reads them through @theme.
+   Contrast (WCAG AA) was checked for every text/surface pair listed here.
+   ========================================================================== */
+
+/* ── Dark · "Tide": the Gulf at night. Depth is blue, never grey-black. ── */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --frame: #08101f;      /* window behind the canvas: sidebar, dock */
+  --bg: #0e182b;         /* the canvas */
+  --surface-1: #111d33;  /* columns, panels */
+  --surface-2: #16233d;  /* cards, inputs */
+  --surface-3: #1d2c4a;  /* hover, selected */
+  --surface-overlay: rgb(4 8 18 / 0.66);
+  --highlight: rgb(200 220 255 / 0.05);
+
+  --border: rgb(170 195 255 / 0.08);
+  --border-strong: rgb(170 195 255 / 0.15);
+
+  --text: #eef2fa;   /* 14.2:1 on surface-2 */
+  --text-2: #aeb9cf; /*  8.0:1 */
+  --text-3: #8794ae; /*  5.2:1 */
+
+  /* Accent default: saffron gold (overridden by [data-accent]) */
+  --accent: #f0b54a;
+  --accent-hover: #f5c46a;
+  --accent-ink: #241703;  /* 9.5:1 on accent */
+  --accent-text: #f2be5c; /* 9.3:1 on surface-2 */
+  --accent-soft: color-mix(in oklab, var(--accent) 14%, transparent);
+
+  --danger: #ff8a7a;
+  --danger-soft: rgb(255 138 122 / 0.13);
+  --warning: #f59e5b;
+  --warning-soft: rgb(245 158 91 / 0.13);
+  --success: #6fd3a4;
+
+  /* Pearl: the one iridescent signature (logo, focus ring, onboarding) */
+  --pearl: conic-gradient(from 210deg, #f6e7c8, #cfe6f2, #e2d6f5, #f7d9cf, #f6e7c8);
+
+  --elev-pop: 0 1px 0 0 var(--highlight) inset, 0 16px 40px -12px rgb(0 4 14 / 0.7), 0 2px 6px rgb(0 4 14 / 0.4);
+  --elev-sheet: 0 1px 0 0 var(--highlight) inset, 0 32px 80px -16px rgb(0 4 14 / 0.8);
+  --elev-card: 0 1px 0 0 var(--highlight) inset, 0 1px 2px rgb(0 4 14 / 0.35);
+  --elev-lift: 0 1px 0 0 var(--highlight) inset, 0 18px 36px -10px rgb(0 4 14 / 0.75);
+
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+
+  --subject-mix: 68%;
+  --subject-toward: #fff;
+}
+
+/* ── Light · "Pearl": cool nacre paper, ink-blue text. ── */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --frame: #e4e9f2;
+  --bg: #f5f7fb;
+  --surface-1: #eef2f8;
+  --surface-2: #ffffff;
+  --surface-3: #e6ebf3;
+  --surface-overlay: rgb(14 24 48 / 0.3);
+  --highlight: rgb(255 255 255 / 0.8);
+
+  --border: rgb(14 24 48 / 0.08);
+  --border-strong: rgb(14 24 48 / 0.15);
+
+  --text: #0e1830;   /* 17.6:1 */
+  --text-2: #46526b; /*  7.8:1 */
+  --text-3: #5b6781; /*  5.7:1 */
+
+  --accent: #e3a21a;
+  --accent-hover: #d4950f;
+  --accent-ink: #1f1400;  /* 8.2:1 */
+  --accent-text: #8a5b00; /* 5.9:1 on white */
+  --accent-soft: color-mix(in oklab, var(--accent) 14%, transparent);
+
+  --danger: #b3261e;
+  --danger-soft: rgb(179 38 30 / 0.08);
+  --warning: #a3480f;
+  --warning-soft: rgb(163 72 15 / 0.09);
+  --success: #1f7a4f;
+
+  --pearl: conic-gradient(from 210deg, #e9cf9a, #9fcbe3, #c6b4ec, #efb8a6, #e9cf9a);
+
+  --elev-pop: 0 16px 40px -12px rgb(14 24 48 / 0.18), 0 2px 6px rgb(14 24 48 / 0.06);
+  --elev-sheet: 0 32px 80px -16px rgb(14 24 48 / 0.28);
+  --elev-card: 0 1px 2px rgb(14 24 48 / 0.06), 0 0 0 1px rgb(14 24 48 / 0.02);
+  --elev-lift: 0 18px 36px -10px rgb(14 24 48 / 0.22);
+
+  --subject-mix: 78%;
+  --subject-toward: #000;
+}
+
+/* ── Accent presets. Each pair is checked for AA (text on surface-2, ink on fill). ── */
+:root[data-accent='pearl'] { --accent: #5fd0c5; --accent-hover: #7adbd1; --accent-ink: #032420; --accent-text: #6ad6cb; }
+:root[data-accent='coral'] { --accent: #ff9473; --accent-hover: #ffa98d; --accent-ink: #2b0c02; --accent-text: #ff9c7d; }
+:root[data-accent='iris']  { --accent: #a7b0ff; --accent-hover: #bcc3ff; --accent-ink: #0d1240; --accent-text: #b0b8ff; }
+:root[data-theme='light'][data-accent='pearl'] { --accent: #0b7a72; --accent-hover: #096a63; --accent-ink: #ffffff; --accent-text: #0b7a72; }
+:root[data-theme='light'][data-accent='coral'] { --accent: #b4431f; --accent-hover: #9c3a1a; --accent-ink: #ffffff; --accent-text: #b4431f; }
+:root[data-theme='light'][data-accent='iris']  { --accent: #4652c9; --accent-hover: #3b46b0; --accent-ink: #ffffff; --accent-text: #4652c9; }
+
+:root {
+  /* Typography */
+  /* Readex Pro speaks both scripts with one voice; headings get Bricolage (Latin) and Reem Kufi (Arabic). */
+  --font-latin: 'Readex Pro Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: 'Readex Pro Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Reem Kufi Variable', 'Readex Pro Variable', ui-sans-serif, sans-serif;
+  --font-num: 'Bricolage Grotesque Variable', 'Readex Pro Variable', ui-sans-serif, sans-serif;
+
+  /* Motion */
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 320ms;
+  --dur-sheet: 420ms;
+  --motion-standard: cubic-bezier(0.22, 1, 0.36, 1); /* soft out-expo: arrives fast, settles slowly */
+  --motion-exit: cubic-bezier(0.4, 0, 1, 1);
+  --motion-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-spring: linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%, 1.017 19.4%, 1.067, 1.085 24.6%, 1.073 28%, 1.005 37.1%, 0.991 41.8%, 1.002 59.4%, 1);
+
+  /* Layout */
+  --sidebar-w: 236px;
+  --sidebar-w-collapsed: 72px;
+  --bottombar-h: 84px;
+  --content-max: 1680px;
+
+  /* Layers */
+  --z-sticky: 10;
+  --z-nav: 20;
+  --z-overlay: 40;
+  --z-sheet: 50;
+  --z-palette: 60;
+  --z-toast: 70;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 120ms;
+    --dur-slow: 120ms;
+    --dur-sheet: 120ms;
+  }
+}
+
+/* The in-app "Reduce motion" setting mirrors the OS preference. */
+:root[data-motion='reduce'] {
+  --dur-fast: 0ms;
+  --dur-base: 120ms;
+  --dur-slow: 120ms;
+  --dur-sheet: 120ms;
+}
