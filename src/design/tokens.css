@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Mizan design tokens — the single source of truth.
+   Raw values live on :root[data-theme]; Tailwind reads them through @theme.
+   Contrast (WCAG AA) was checked for every text/surface pair listed here.
+   ========================================================================== */
+
+/* -- Dark - "Ink": deep slate-blue, desaturated so content leads. -- */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --frame: #0b1018;      /* window behind the canvas: sidebar, dock */
+  --bg: #0f151f;         /* the canvas */
+  --surface-1: #141b26;  /* columns, panels */
+  --surface-2: #19212d;  /* cards, inputs */
+  --surface-3: #202936;  /* hover, selected */
+  --surface-overlay: rgb(5 8 14 / 0.66);
+  --highlight: rgb(220 230 245 / 0.04);
+
+  --border: rgb(180 195 220 / 0.08);
+  --border-strong: rgb(180 195 220 / 0.14);
+
+  --text: #e8ecf2;   /* 13.7:1 on surface-2 */
+  --text-2: #a7b0be; /*  7.4:1 */
+  --text-3: #8a94a3; /*  5.0:1 */
+
+  /* Accent default: brass (overridden by [data-accent]) */
+  --accent: #d4af6a;
+  --accent-hover: #ddbb7a;
+  --accent-ink: #221804;  /* 8.5:1 on accent */
+  --accent-text: #ddbb7a; /* 8.8:1 on surface-2 */
+  --accent-soft: color-mix(in oklab, var(--accent) 13%, transparent);
+
+  --danger: #e7866f;
+  --danger-soft: rgb(231 134 111 / 0.12);
+  --warning: #e8a35e;
+  --warning-soft: rgb(232 163 94 / 0.12);
+  --success: #6cc39a;
+
+  /* Pearl: kept for the logo mark */
+  --pearl: conic-gradient(from 210deg, #efe3c8, #cfdde8, #ddd6ea, #ecd9cf, #efe3c8);
+
+  --elev-pop: 0 1px 0 0 var(--highlight) inset, 0 14px 36px -12px rgb(0 0 0 / 0.6), 0 2px 6px rgb(0 0 0 / 0.35);
+  --elev-sheet: 0 1px 0 0 var(--highlight) inset, 0 28px 70px -16px rgb(0 0 0 / 0.7);
+  --elev-card: 0 1px 0 0 var(--highlight) inset, 0 1px 2px rgb(0 0 0 / 0.3);
+  --elev-lift: 0 1px 0 0 var(--highlight) inset, 0 12px 28px -10px rgb(0 0 0 / 0.6);
+
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+
+  --subject-mix: 68%;
+  --subject-toward: #fff;
+}
+
+/* -- Light - "Paper": cool white, ink text, brass details. -- */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --frame: #e8ebf0;
+  --bg: #f6f7f9;
+  --surface-1: #eef0f4;
+  --surface-2: #ffffff;
+  --surface-3: #e6e9ee;
+  --surface-overlay: rgb(17 24 39 / 0.3);
+  --highlight: rgb(255 255 255 / 0.8);
+
+  --border: rgb(17 24 39 / 0.08);
+  --border-strong: rgb(17 24 39 / 0.15);
+
+  --text: #111827;   /* 17.7:1 */
+  --text-2: #4a5363; /*  7.8:1 */
+  --text-3: #5f6878; /*  5.6:1 */
+
+  --accent: #8a6416;
+  --accent-hover: #7d5a12;
+  --accent-ink: #ffffff;  /* 5.4:1 */
+  --accent-text: #7d5a12; /* 6.3:1 on white */
+  --accent-soft: color-mix(in oklab, var(--accent) 11%, transparent);
+
+  --danger: #b3261e;
+  --danger-soft: rgb(179 38 30 / 0.08);
+  --warning: #a3480f;
+  --warning-soft: rgb(163 72 15 / 0.09);
+  --success: #1f7a4f;
+
+  --pearl: conic-gradient(from 210deg, #e3cf9f, #a9c7da, #c7bde3, #e6bcaa, #e3cf9f);
+
+  --elev-pop: 0 14px 36px -12px rgb(17 24 39 / 0.16), 0 2px 6px rgb(17 24 39 / 0.06);
+  --elev-sheet: 0 28px 70px -16px rgb(17 24 39 / 0.24);
+  --elev-card: 0 1px 2px rgb(17 24 39 / 0.05), 0 0 0 1px rgb(17 24 39 / 0.02);
+  --elev-lift: 0 12px 28px -10px rgb(17 24 39 / 0.18);
+
+  --subject-mix: 78%;
+  --subject-toward: #000;
+}
+
+/* -- Accent presets. Each pair is checked for AA (text on surface-2, ink on fill). -- */
+:root[data-accent='pearl'] { --accent: #7fb8c9; --accent-hover: #93c4d3; --accent-ink: #06202a; --accent-text: #8cc1d1; }
+:root[data-accent='coral'] { --accent: #e59a84; --accent-hover: #ebab98; --accent-ink: #2b0d05; --accent-text: #e9a691; }
+:root[data-accent='iris']  { --accent: #a9b4f0; --accent-hover: #bac3f3; --accent-ink: #0e1440; --accent-text: #b3bdf2; }
+:root[data-accent='emerald'] { --accent: #6fcb9f; --accent-hover: #86d5ae; --accent-ink: #0f2a1d; --accent-text: #7ad0a6; }
+:root[data-accent='rose']    { --accent: #e58fb0; --accent-hover: #eba3be; --accent-ink: #2d0b18; --accent-text: #e99abb; }
+:root[data-accent='sky']     { --accent: #7db7f0; --accent-hover: #93c4f3; --accent-ink: #081f38; --accent-text: #88bdf1; }
+:root[data-accent='slate']   { --accent: #aeb8c8; --accent-hover: #bfc8d5; --accent-ink: #151b26; --accent-text: #b6bfcd; }
+:root[data-theme='light'][data-accent='emerald'] { --accent: #17694a; --accent-hover: #125a3f; --accent-ink: #ffffff; --accent-text: #17694a; }
+:root[data-theme='light'][data-accent='rose']    { --accent: #a3315f; --accent-hover: #8c2a52; --accent-ink: #ffffff; --accent-text: #a3315f; }
+:root[data-theme='light'][data-accent='sky']     { --accent: #1f5fa8; --accent-hover: #1a5190; --accent-ink: #ffffff; --accent-text: #1f5fa8; }
+:root[data-theme='light'][data-accent='slate']   { --accent: #3d4a60; --accent-hover: #333f52; --accent-ink: #ffffff; --accent-text: #3d4a60; }
+:root[data-theme='light'][data-accent='pearl'] { --accent: #0f6274; --accent-hover: #0c5363; --accent-ink: #ffffff; --accent-text: #0f6274; }
+:root[data-theme='light'][data-accent='coral'] { --accent: #a3432a; --accent-hover: #8e3a24; --accent-ink: #ffffff; --accent-text: #a3432a; }
+:root[data-theme='light'][data-accent='iris']  { --accent: #3f4bb5; --accent-hover: #36409c; --accent-ink: #ffffff; --accent-text: #3f4bb5; }
+
+:root {
+  /* Typography */
+  /* IBM Plex carries text in both scripts; Noto Kufi Arabic gives Arabic headings a formal, structured voice.
+     Settings can swap the Arabic text face (sets --font-arabic-text). Reading notes use Noto Serif / Noto Naskh. */
+  --font-arabic-text: 'IBM Plex Sans Arabic';
+  --font-latin: 'IBM Plex Sans Variable', var(--font-arabic-text), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: 'IBM Plex Sans Variable', var(--font-arabic-text), ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'IBM Plex Sans Variable', 'Noto Kufi Arabic Variable', ui-sans-serif, sans-serif;
+  --font-num: 'IBM Plex Sans Variable', ui-sans-serif, sans-serif;
+  --font-reading: 'Noto Serif Variable', 'Noto Naskh Arabic Variable', Georgia, serif;
+
+  /* Motion */
+  --dur-fast: 140ms;
+  --dur-base: 200ms;
+  --dur-slow: 280ms;
+  --dur-sheet: 360ms;
+  --motion-standard: cubic-bezier(0.2, 0.8, 0.2, 1); /* calm ease-out, no overshoot */
+  --motion-exit: cubic-bezier(0.4, 0, 1, 1);
+  --motion-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-spring: linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%, 1.017 19.4%, 1.067, 1.085 24.6%, 1.073 28%, 1.005 37.1%, 0.991 41.8%, 1.002 59.4%, 1);
+
+  /* Layout */
+  --sidebar-w: 236px;
+  --sidebar-w-collapsed: 72px;
+  --bottombar-h: 84px;
+  --content-max: 1680px;
+
+  /* Layers */
+  --z-sticky: 10;
+  --z-nav: 20;
+  --z-overlay: 40;
+  --z-sheet: 50;
+  --z-palette: 60;
+  --z-toast: 70;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 120ms;
+    --dur-slow: 120ms;
+    --dur-sheet: 120ms;
+  }
+}
+
+/* The in-app "Reduce motion" setting mirrors the OS preference. */
+:root[data-motion='reduce'] {
+  --dur-fast: 0ms;
+  --dur-base: 120ms;
+  --dur-slow: 120ms;
+  --dur-sheet: 120ms;
+}

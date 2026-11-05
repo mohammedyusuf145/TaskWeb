@@ -1,0 +1,13 @@
+# Minimal Supabase CLI config. Run `supabase link --project-ref <ref>` to connect.
+project_id = "mizan"
+
+[functions.delete-account]
+verify_jwt = true
+
+# Called by pg_cron with a shared secret, not a user JWT.
+[functions.send-reminders]
+verify_jwt = false
+
+# Verifies the user's JWT again inside the function (rate limits are per user).
+[functions.tutor]
+verify_jwt = true
